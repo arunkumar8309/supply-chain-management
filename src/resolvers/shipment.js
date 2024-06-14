@@ -14,6 +14,24 @@ const shipmentResolvers = {
     },
   },
   Mutation: {
+    addShipment: async (
+      _,
+      { origin, destination, status, estimatedDelivery }
+    ) => {
+      try {
+        const newShipment = new Shipment({
+          origin,
+          destination,
+          status,
+          estimatedDelivery: new Date(estimatedDelivery), // Ensure to parse as Date
+        });
+
+        const savedShipment = await newShipment.save();
+        return savedShipment;
+      } catch (error) {
+        throw new Error(`Failed to add new shipment. Error: ${error.message}`);
+      }
+    },
     updateShipmentStatus: async (_, { id, status }) => {
       try {
         const updatedShipment = await Shipment.findByIdAndUpdate(

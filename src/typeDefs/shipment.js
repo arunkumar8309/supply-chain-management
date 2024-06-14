@@ -14,6 +14,12 @@ const shipmentTypeDefs = gql`
   }
 
   extend type Mutation {
+    addShipment(
+      origin: String!
+      destination: String!
+      status: String!
+      estimatedDelivery: String!
+    ): Shipment!
     updateShipmentStatus(id: ID!, status: String!): Shipment!
   }
 `;

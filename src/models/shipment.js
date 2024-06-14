@@ -19,4 +19,4 @@ const shipmentSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Shipment", shipmentSchema, "Shipment");
+module.exports = mongoose.model("Shipment", shipmentSchema, "Shipment"); // Assuming collection name is "Shipments"

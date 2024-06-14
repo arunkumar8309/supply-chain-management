@@ -63,7 +63,7 @@
         "body": {
           "query": "query GetShipment($id: ID!) { shipment(id: $id) { id origin destination status estimatedDelivery } }",
           "variables": {
-            "id": "1"
+            "id": "666c2a1f4ff15ea94bc541df"
           }
         }
       },
@@ -88,7 +88,7 @@
         "body": {
           "query": "mutation UpdateShipmentStatus($id: ID!, $status: String!) { updateShipmentStatus(id: $id, status: $status) { id origin destination status estimatedDelivery } }",
           "variables": {
-            "id": "1",
+            "id": "666c2a1f4ff15ea94bc541df",
             "status": "Delivered"
           }
         }
