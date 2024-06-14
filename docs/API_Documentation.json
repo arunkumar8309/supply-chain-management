@@ -1,0 +1,146 @@
+{
+    "base_url": "http://localhost:4000/graphql",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "endpoints": [
+      {
+        "name": "Add Inventory Item",
+        "method": "POST",
+        "url": "http://localhost:4000/graphql",
+        "body": {
+          "query": "mutation AddInventoryItem($name: String!, $sku: String!, $quantity: Int!, $warehouse: String!) { addInventoryItem(name: $name, sku: $sku, quantity: $quantity, warehouse: $warehouse) { id name sku quantity warehouse } }",
+          "variables": {
+            "name": "Test Item",
+            "sku": "12345",
+            "quantity": 100,
+            "warehouse": "Warehouse A"
+          }
+        }
+      },
+      {
+        "name": "Fetch Inventory Items (with Pagination)",
+        "method": "POST",
+        "url": "http://localhost:4000/graphql",
+        "body": {
+          "query": "query GetInventoryItems($limit: Int, $offset: Int) { inventoryItems(limit: $limit, offset: $offset) { id name sku quantity warehouse } }",
+          "variables": {
+            "limit": 10,
+            "offset": 0
+          }
+        }
+      },
+      {
+        "name": "Update Inventory Item",
+        "method": "POST",
+        "url": "http://localhost:4000/graphql",
+        "body": {
+          "query": "mutation UpdateInventoryItem($id: ID!, $name: String, $sku: String, $quantity: Int, $warehouse: String) { updateInventoryItem(id: $id, name: $name, sku: $sku, quantity: $quantity, warehouse: $warehouse) { id name sku quantity warehouse } }",
+          "variables": {
+            "id": "666c1202a287ab36cc27308d",
+            "name": "Updated Item",
+            "sku": "54321",
+            "quantity": 50,
+            "warehouse": "Warehouse B"
+          }
+        }
+      },
+      {
+        "name": "Delete Inventory Item",
+        "method": "POST",
+        "url": "http://localhost:4000/graphql",
+        "body": {
+          "query": "mutation DeleteInventoryItem($id: ID!) { deleteInventoryItem(id: $id) }",
+          "variables": {
+            "id": "666c1202a287ab36cc27308d"
+          }
+        }
+      },
+      {
+        "name": "Fetch Shipment Details",
+        "method": "POST",
+        "url": "http://localhost:4000/graphql",
+        "body": {
+          "query": "query GetShipment($id: ID!) { shipment(id: $id) { id origin destination status estimatedDelivery } }",
+          "variables": {
+            "id": "1"
+          }
+        }
+      },
+      {
+        "name": "Add Shipment",
+        "method": "POST",
+        "url": "http://localhost:4000/graphql",
+        "body": {
+          "query": "mutation AddShipment($origin: String!, $destination: String!, $status: String!, $estimatedDelivery: String!) { addShipment(origin: $origin, destination: $destination, status: $status, estimatedDelivery: $estimatedDelivery) { id origin destination status estimatedDelivery } }",
+          "variables": {
+            "origin": "Warehouse A",
+            "destination": "Customer Address",
+            "status": "In Transit",
+            "estimatedDelivery": "2024-06-20"
+          }
+        }
+      },
+      {
+        "name": "Update Shipment Status",
+        "method": "POST",
+        "url": "http://localhost:4000/graphql",
+        "body": {
+          "query": "mutation UpdateShipmentStatus($id: ID!, $status: String!) { updateShipmentStatus(id: $id, status: $status) { id origin destination status estimatedDelivery } }",
+          "variables": {
+            "id": "1",
+            "status": "Delivered"
+          }
+        }
+      },
+      {
+        "name": "Fetch Suppliers",
+        "method": "POST",
+        "url": "http://localhost:4000/graphql",
+        "body": {
+          "query": "query GetSuppliers { suppliers { id name contactPerson phone email } }"
+        }
+      },
+      {
+        "name": "Add Supplier",
+        "method": "POST",
+        "url": "http://localhost:4000/graphql",
+        "body": {
+          "query": "mutation AddSupplier($name: String!, $contactPerson: String!, $phone: String!, $email: String!) { addSupplier(name: $name, contactPerson: $contactPerson, phone: $phone, email: $email) { id name contactPerson phone email } }",
+          "variables": {
+            "name": "Supplier A",
+            "contactPerson": "John Doe",
+            "phone": "123-456-7890",
+            "email": "john@example.com"
+          }
+        }
+      },
+      {
+        "name": "Update Supplier",
+        "method": "POST",
+        "url": "http://localhost:4000/graphql",
+        "body": {
+          "query": "mutation UpdateSupplier($id: ID!, $name: String, $contactPerson: String, $phone: String, $email: String) { updateSupplier(id: $id, name: $name, contactPerson: $contactPerson, phone: $phone, email: $email) { id name contactPerson phone email } }",
+          "variables": {
+            "id": "666c141ca287ab36cc273097",
+            "name": "Updated Supplier",
+            "contactPerson": "Jane Smith",
+            "phone": "987-654-3210",
+            "email": "jane@example.com"
+          }
+        }
+      },
+      {
+        "name": "Delete Supplier",
+        "method": "POST",
+        "url": "http://localhost:4000/graphql",
+        "body": {
+          "query": "mutation DeleteSupplier($id: ID!) { deleteSupplier(id: $id) }",
+          "variables": {
+            "id": "666c141ca287ab36cc273097"
+          }
+        }
+      }
+    ]
+  }
+  
